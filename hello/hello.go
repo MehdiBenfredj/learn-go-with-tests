@@ -1,5 +1,11 @@
 package main
 
+import "fmt"
+
+func main() {
+	fmt.Println(Hello("Mehdi", "French"))
+}
+
 func Hello(n string, l string) string {
 	var helloPrefixDict = map[string]string{
 		"Spanish": "Hola, ",
