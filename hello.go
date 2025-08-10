@@ -1,9 +1,10 @@
 package main
 
-func main() {
-
-}
+const englishHelloPrefix = "Hello, "
 
 func Hello(n string) string {
-	return "Hello, " + n
+	if n == "" {
+		n = "World"
+	}
+	return englishHelloPrefix + n
 }
