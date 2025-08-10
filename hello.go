@@ -1,10 +1,27 @@
 package main
 
-const englishHelloPrefix = "Hello, "
-
-func Hello(n string) string {
-	if n == "" {
-		n = "World"
+func Hello(n string, l string) string {
+	var helloPrefixDict = map[string]string{
+		"Spanish": "Hola, ",
+		"English": "Hello, ",
+		"French":  "Salut, ",
 	}
-	return englishHelloPrefix + n
+
+	var worldDict = map[string]string{
+		"Spanish": "Mundo",
+		"English": "World",
+		"French":  "Monde",
+	}
+
+	_, ok := helloPrefixDict[l]
+
+	if !ok || l == "" {
+		l = "English"
+	}
+
+	if n == "" {
+		n = worldDict[l]
+	}
+
+	return helloPrefixDict[l] + n
 }
