@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"io"
-	"log"
 	"net/http"
+	"os"
+
+	"github.com/mehdibenfredj/learn-go-with-tests/mocking"
 )
 
 func Greet(writer io.Writer, name string) {
@@ -16,7 +18,7 @@ func MyGreeterHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	log.Fatal(http.ListenAndServe(":5001", http.HandlerFunc(MyGreeterHandler)))
+	mocking.Countdown(os.Stdout, &mocking.DefaultSleeper{})
 }
 
 func Hello(n string, l string) string {
