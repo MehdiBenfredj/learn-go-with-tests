@@ -5,8 +5,9 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"time"
 
-	"github.com/mehdibenfredj/learn-go-with-tests/mocking"
+	math_test "github.com/mehdibenfredj/learn-go-with-tests/math"
 )
 
 func Greet(writer io.Writer, name string) {
@@ -18,7 +19,19 @@ func MyGreeterHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	mocking.Countdown(os.Stdout, &mocking.DefaultSleeper{})
+
+	for range 30000 {
+		//fmt.Printf("writing %d", now.Second())
+		file, err := os.OpenFile("/Users/mehdi/code/go/learn-go-with-tests/math/test_clock.svg", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
+		if err != nil {
+			fmt.Errorf("Could not open file", err.Error())
+		}
+		defer file.Close()
+		math_test.WriteTime(file, time.Now())
+		time.Sleep(time.Second)
+
+	}
+	//<-time.After(30 * time.Second)
 }
 
 func Hello(n string, l string) string {
