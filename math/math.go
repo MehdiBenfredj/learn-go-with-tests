@@ -6,7 +6,6 @@ import (
 	"io"
 	"math"
 	"strings"
-	"testing"
 	"time"
 )
 
@@ -112,5 +111,3 @@ func SVGWriter(w io.Writer, tm time.Time) {
 	w.Write([]byte(sb.String()))
 	fmt.Printf("seconds : %d \n Point {x : %f, y : %f} \n", tm.Second(), points[2].X, points[2].Y)
 }
-
-
